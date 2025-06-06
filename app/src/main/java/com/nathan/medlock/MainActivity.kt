@@ -1,0 +1,26 @@
+package com.nathan.medlock
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.nathan.medlock.ui.HomeActivity
+import com.nathan.medlock.ui.LoginActivity
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val auth = FirebaseAuth.getInstance()
+        if (auth.currentUser == null) {
+            // User not logged in, go to Register or Login
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+}

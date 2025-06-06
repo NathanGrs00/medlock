@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +22,13 @@ class LoginActivity : AppCompatActivity() {
 
         val emailEditText = findViewById<EditText>(R.id.editTextEmail)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
+        val registerButton = findViewById<TextView>(R.id.textViewNew)
         val loginButton = findViewById<Button>(R.id.buttonLogin)
+
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()

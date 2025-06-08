@@ -33,5 +33,12 @@
         android:id="@+id/textViewNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:text="Make a new account?" />
+
+    <Button
+        android:id="@+id/buttonFingerprint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login with Fingerprint" />
 </LinearLayout>

@@ -1,35 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/primary_blue">
 
-    <TextView
-        android:id="@+id/textId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/platinum"/>
-    <TextView android:id="@+id/textUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/platinum"/>
-    <TextView android:id="@+id/textTimeCreated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/platinum"/>
-    <TextView android:id="@+id/textTimeBlocked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/platinum"/>
-    <TextView android:id="@+id/textIsBlocked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/platinum"/>
-    <TextView android:id="@+id/textTimeLastLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/platinum"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/circle_background"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_placeholder" />
+
+        <TextView
+            android:id="@+id/textUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/platinum"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/platinum"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/textTimeCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textTimeLastLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textIsBlocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textTimeBlocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</ScrollView>

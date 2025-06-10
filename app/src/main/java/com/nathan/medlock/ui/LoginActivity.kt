@@ -10,18 +10,16 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.nathan.medlock.R
+import com.nathan.medlock.controller.LoginController
 
 class LoginActivity : AppCompatActivity() {
-
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        auth = FirebaseAuth.getInstance()
+        var failCounter = 0
 
         val emailEditText = findViewById<EditText>(R.id.editTextEmail)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
@@ -75,22 +73,19 @@ class LoginActivity : AppCompatActivity() {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, HomeActivity::class.java)
-                        startActivity(intent)
-                        finish()
+            val loginController = LoginController()
+            loginController.checkLogin(email, password, this) { success ->
+                if (!success) {
+                    failCounter++
+                    if (failCounter >= 3) {
+                        Toast.makeText(this, "Too many failed attempts. Please try again later.", Toast.LENGTH_LONG).show()
+                        loginButton.isEnabled = false
+                        fingerprintButton.isEnabled = false
                     } else {
-                        Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login failed. Attempt $failCounter of 3.", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
         }
     }
 }

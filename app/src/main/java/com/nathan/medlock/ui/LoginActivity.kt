@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 
         var failCounter = 0
 
-        val emailEditText = findViewById<EditText>(R.id.editTextEmail)
+        val emailEditText = findViewById<EditText>(R.id.editTextUsername)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
         val registerButton = findViewById<TextView>(R.id.textViewNew)
         val loginButton = findViewById<Button>(R.id.buttonLogin)

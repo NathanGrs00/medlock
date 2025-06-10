@@ -16,14 +16,16 @@ class RegisterActivity : AppCompatActivity() {
 
         val emailEditText = findViewById<EditText>(R.id.editTextEmail)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
+        val usernameEditText = findViewById<EditText>(R.id.editTextUsername)
         val registerButton = findViewById<Button>(R.id.buttonRegister)
 
         registerButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
+            val username = usernameEditText.text.toString().trim()
 
             val registerController = RegisterController()
-            registerController.checkRegistration(email, password, this) { success ->
+            registerController.checkRegistration(email, password, username, this) { success ->
                 if (success) {
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)

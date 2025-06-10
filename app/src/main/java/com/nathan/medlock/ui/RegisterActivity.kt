@@ -32,5 +32,10 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+
+        val backButton = findViewById<Button>(R.id.buttonGoBack)
+        backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

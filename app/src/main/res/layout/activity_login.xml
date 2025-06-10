@@ -2,45 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_blue"
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/secondary_blue"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewSubtitleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/secondary_blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:autofillHints="emailAddress"
+        android:textColor="@color/platinum"
         android:hint="@string/email"
+        android:fontFamily="@font/lora"
+        android:textColorHint="@color/platinum"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="24dp"
         android:autofillHints="password"
         android:hint="@string/password"
+        android:fontFamily="@font/lora"
+        android:textColor="@color/platinum"
+        android:textColorHint="@color/platinum"
         android:inputType="textPassword" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_marginBottom="14dp"
-        android:text="@string/login" />
+        android:fontFamily="@font/lora"
+        android:text="@string/login"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
-        android:text="@string/make_new_account" />
+        android:fontFamily="@font/lora"
+        android:text="@string/make_new_account"
+        android:textColor="@color/platinum" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonFingerprint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login_with_fingerprint" />
+        android:layout_height="65dp"
+        android:fontFamily="@font/lora"
+        android:text="@string/login_with_fingerprint"
+        android:textStyle="bold" />
+
 </LinearLayout>

@@ -61,17 +61,10 @@
         android:layout_height="65dp"
         android:layout_marginBottom="14dp"
         android:fontFamily="@font/lora"
+        android:background="@color/rich_black"
+        android:textColor="@color/platinum"
         android:text="@string/login"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewNew"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
-        android:fontFamily="@font/lora"
-        android:text="@string/make_new_account"
-        android:textColor="@color/platinum" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonFingerprint"
@@ -79,6 +72,17 @@
         android:layout_height="65dp"
         android:fontFamily="@font/lora"
         android:text="@string/login_with_fingerprint"
+        android:textColor="@color/platinum"
+        android:background="@color/rich_black"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/lora"
+        android:text="@string/make_new_account"
+        android:textColor="@color/platinum"/>
 
 </LinearLayout>

@@ -25,44 +25,6 @@ class LoginActivity : AppCompatActivity() {
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
         val registerButton = findViewById<TextView>(R.id.textViewNew)
         val loginButton = findViewById<Button>(R.id.buttonLogin)
-        val fingerprintButton = findViewById<Button>(R.id.buttonFingerprint)
-
-        fingerprintButton.setOnClickListener {
-            val biometricManager = BiometricManager.from(this)
-            if (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG) ==
-                BiometricManager.BIOMETRIC_SUCCESS) {
-
-                val executor = ContextCompat.getMainExecutor(this)
-                val biometricPrompt = BiometricPrompt(this, executor,
-                    object : BiometricPrompt.AuthenticationCallback() {
-                        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                            super.onAuthenticationSucceeded(result)
-                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                            super.onAuthenticationError(errorCode, errString)
-                            Toast.makeText(this@LoginActivity, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
-                        }
-                        override fun onAuthenticationFailed() {
-                            super.onAuthenticationFailed()
-                            Toast.makeText(this@LoginActivity, "Authentication failed", Toast.LENGTH_SHORT).show()
-                        }
-                    })
-
-                val promptInfo = BiometricPrompt.PromptInfo.Builder()
-                    .setTitle("Login with Fingerprint")
-                    .setSubtitle("Use your fingerprint to login")
-                    .setNegativeButtonText("Cancel")
-                    .build()
-
-                biometricPrompt.authenticate(promptInfo)
-            } else {
-                Toast.makeText(this, "Fingerprint not available", Toast.LENGTH_SHORT).show()
-            }
-        }
-
 
         registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -80,9 +42,45 @@ class LoginActivity : AppCompatActivity() {
                     if (failCounter >= 3) {
                         Toast.makeText(this, "Too many failed attempts. Please try again later.", Toast.LENGTH_LONG).show()
                         loginButton.isEnabled = false
-                        fingerprintButton.isEnabled = false
                     } else {
                         Toast.makeText(this, "Login failed. Attempt $failCounter of 3.", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val biometricManager = BiometricManager.from(this)
+                    if (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG) ==
+                        BiometricManager.BIOMETRIC_SUCCESS) {
+
+                        val executor = ContextCompat.getMainExecutor(this)
+                        val biometricPrompt = BiometricPrompt(this, executor,
+                            object : BiometricPrompt.AuthenticationCallback() {
+                                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                                    super.onAuthenticationSucceeded(result)
+                                    val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
+
+                                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                                    super.onAuthenticationError(errorCode, errString)
+                                    // Only show a message, do not navigate
+                                    Toast.makeText(this@LoginActivity, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
+                                }
+
+                                override fun onAuthenticationFailed() {
+                                    super.onAuthenticationFailed()
+                                    Toast.makeText(this@LoginActivity, "Authentication failed", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+
+                        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                            .setTitle("Login with Fingerprint")
+                            .setSubtitle("Use your fingerprint to login")
+                            .setNegativeButtonText("Cancel")
+                            .build()
+
+                        biometricPrompt.authenticate(promptInfo)
+                    } else {
+                        Toast.makeText(this, "Fingerprint not available", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package com.nathan.medlock.controller
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +36,7 @@ class RegisterController {
             else -> {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
+                        Log.d("UserDetailActivity", "userId : ${auth.currentUser?.uid}")
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid ?: ""
                             val user = User(

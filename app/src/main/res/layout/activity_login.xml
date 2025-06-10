@@ -66,16 +66,6 @@
         android:text="@string/login"
         android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonFingerprint"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:fontFamily="@font/lora"
-        android:text="@string/login_with_fingerprint"
-        android:textColor="@color/platinum"
-        android:background="@color/rich_black"
-        android:textStyle="bold" />
-
     <TextView
         android:id="@+id/textViewNew"
         android:layout_width="match_parent"

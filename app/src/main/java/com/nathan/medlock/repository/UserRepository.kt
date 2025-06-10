@@ -16,4 +16,22 @@ class UserRepository {
                 callback(false)
             }
     }
+
+    fun getUser(userId: String, callback: (User?) -> Unit) {
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val user = document.toObject(User::class.java)
+                    callback(user)
+                } else {
+                    callback(null)
+                }
+            }
+            .addOnFailureListener { _: Exception ->
+                callback(null)
+            }
+    }
 }

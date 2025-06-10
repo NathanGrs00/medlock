@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MedLock</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="welcome_message">Welcome to MedLock</string>
+    <string name="make_new_account">Make a new account?</string>
+    <string name="login_with_fingerprint">Login with Fingerprint</string>
 </resources>

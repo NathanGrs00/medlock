@@ -50,6 +50,12 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.MedLock" />
 
+        <activity
+            android:name=".ui.DoctorListActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MedLock" />
+
     </application>
 
 </manifest>

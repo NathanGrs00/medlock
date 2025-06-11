@@ -13,6 +13,8 @@ class DoctorAdapter(private val doctors: List<Doctor>) :
 
     class DoctorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.textName)
+        val gender: TextView = itemView.findViewById(R.id.textGender)
+        val age: TextView = itemView.findViewById(R.id.textAge)
         val specialty: TextView = itemView.findViewById(R.id.textSpecialty)
         val experience: TextView = itemView.findViewById(R.id.textExperience)
     }
@@ -26,6 +28,8 @@ class DoctorAdapter(private val doctors: List<Doctor>) :
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         val doctor = doctors[position]
         holder.name.text = doctor.name
+        holder.age.text = "Age: ${doctor.age}"
+        holder.gender.text = "Gender: ${doctor.gender}"
         holder.specialty.text = "Specialty: ${doctor.specialty}"
         holder.experience.text = "Experience: ${doctor.yearsOfExperience} years"
     }

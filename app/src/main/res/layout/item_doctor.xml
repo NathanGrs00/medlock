@@ -13,6 +13,16 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/textGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/textSpecialty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

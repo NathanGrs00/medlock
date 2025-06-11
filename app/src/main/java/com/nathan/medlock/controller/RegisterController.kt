@@ -50,8 +50,15 @@ class RegisterController {
                             val userRepository = UserRepository()
                             userRepository.saveUser(user) { success ->
                                 if (success) {
-                                    Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
-                                    callback(true)
+                                    auth.currentUser?.sendEmailVerification()
+                                        ?.addOnCompleteListener { emailTask ->
+                                            if (emailTask.isSuccessful) {
+                                                Toast.makeText(context, "Verification email sent. Please check your inbox.", Toast.LENGTH_LONG).show()
+                                            } else {
+                                                Toast.makeText(context, "Failed to send verification email.", Toast.LENGTH_SHORT).show()
+                                            }
+                                            callback(true)
+                                        }
                                 } else {
                                     Toast.makeText(context, "Failed to save user data", Toast.LENGTH_SHORT).show()
                                     callback(false)

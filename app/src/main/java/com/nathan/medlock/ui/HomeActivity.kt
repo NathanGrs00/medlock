@@ -23,6 +23,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, DoctorListActivity::class.java))
         }
 
+        val buttonChangePassword = findViewById<Button>(R.id.buttonChangePassword)
+        buttonChangePassword.setOnClickListener {
+            val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
+            ChangePasswordActivity().sendPasswordReset(this, userEmail)
+        }
+
         val buttonLogout = findViewById<Button>(R.id.buttonLogout)
         buttonLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()

@@ -4,6 +4,7 @@ import com.google.firebase.Timestamp
 
 data class User (
     val id: String = "",
+    val email: String = "",
     val username: String = "",
     val timeCreated: Timestamp = Timestamp.now(),
     val timeBlocked: Timestamp = Timestamp.now(),

@@ -36,12 +36,23 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString().trim()
 
             val loginController = LoginController()
-            loginController.checkLogin(email, password, this) { success ->
+            loginController.checkLogin(email, password, this) { success, isBlocked ->
+                if (isBlocked) {
+                    loginButton.isEnabled = false
+                    Toast.makeText(this, "Account is blocked. Please contact support.", Toast.LENGTH_LONG).show()
+                    return@checkLogin
+                }
                 if (!success) {
                     failCounter++
                     if (failCounter >= 3) {
-                        Toast.makeText(this, "Too many failed attempts. Please try again later.", Toast.LENGTH_LONG).show()
-                        loginButton.isEnabled = false
+                        val loginController = LoginController()
+                        loginController.blockUserByEmail(email) { blocked ->
+                            if (blocked) {
+                                Toast.makeText(this, "Too many failed attempts. Account is now blocked.", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(this, "Failed to block account. Try again.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     } else {
                         Toast.makeText(this, "Login failed. Attempt $failCounter of 3.", Toast.LENGTH_SHORT).show()
                     }

@@ -42,6 +42,7 @@ class RegisterController {
                             val user = User(
                                 id = userId,
                                 username = username,
+                                email = email,
                                 timeCreated = Timestamp.now(),
                                 timeBlocked = Timestamp.now(),
                                 isBlocked = false,

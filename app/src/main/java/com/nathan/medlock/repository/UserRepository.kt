@@ -34,4 +34,16 @@ class UserRepository {
                 callback(null)
             }
     }
+
+    fun getUserByEmail(email: String, callback: (User?) -> Unit) {
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { documents ->
+                val user = documents.firstOrNull()?.toObject(User::class.java)
+                callback(user)
+            }
+            .addOnFailureListener { callback(null) }
+    }
 }

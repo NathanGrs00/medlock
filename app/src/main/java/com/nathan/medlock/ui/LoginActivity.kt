@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
 
         val newButton = findViewById<TextView>(R.id.textViewNew)
         newButton.setOnClickListener {
-            // Navigate to RegisterActivity
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
